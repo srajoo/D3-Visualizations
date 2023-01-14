@@ -41,3 +41,8 @@ The 10 countries valuated for this assignment are:
 <li>Spain</li>
 <li>Switzerland</li>
 <li>United Arab Emirates</li>
+
+# Demo Instructions
+```bash
+npm install
+```
