@@ -7,7 +7,7 @@ d3.csv("data/lollipop-chart/GDP_Growth.csv", d=>{
 })
 .then(function (data) {
     var margin = { top: 20, right: 20, bottom: 20, left: 60 };
-    var width = 1200 - margin.left - margin.right,
+    var width = 1090 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
     var svg = d3.select('#lollipop-chart')
