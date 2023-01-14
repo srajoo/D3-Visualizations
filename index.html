@@ -1,4 +1,158 @@
 <!DOCTYPE html>
 <html>
 
-</html
+<head>
+    <title>D3 Visualizations</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src='./node_modules/d3/dist/d3.min.js'></script>
+    <script src='./node_modules/d3-format/dist/d3-format.min.js'></script>
+    <script src="node_modules/topojson-client/dist/topojson-client.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div>Sandra Rajoo <a href="mailto:rajoo@usc.edu">rajoo@usc.edu</a></div>
+        <br>
+        <h1>D3 Visualizations</h1>
+        <br />
+        
+        <h2>Dataset</h2>
+        <div class="row answer">
+            <div class="col-md-12 pt-4">
+                <h3>International Gross Domestic Product per capita (US Dollars)</h3>
+                <br />
+                <h4>Dataset Provenance</h4>
+                <p>The data set was sourced from the <a href="http://data.un.org/" target="_blank"> UN Data bank</a> and contains data regarding International Gross Domestic Product (in millions of US dollars). The dataset has the following information:</p>
+                <ol>
+                    <li>Country/Region</li>
+                    <li>Year : 1995, 2005, 2010, 2015, 2017, 2018, 2019</li>
+                    <li>Series:</li>
+                    <ol>
+                        <li>GDP at current prices</li>
+                        <li>GDP per capita</li>
+                        <li>GDP at constant 2010 prices</li>
+                        <li>GDP real rates of growth (percent)</li>
+                    </ol>
+                    <li>Values corresponding to each of the series.</li>
+                </ol>
+                <p>For this assignment, I created a subset from the original dataset by filtering on GDP per capita (in millions of US Dollars) for 10 countries for 2019.</p>
+                <p>The cleaned data can be found under the data folder as a json file.</p>
+                <p>The 10 countries valuated for this assignment are:
+                    <ol>
+                        <li>Anguilla</li>
+                        <li>Denmark</li>
+                        <li>Finland</li>
+                        <li>Iceland</li>
+                        <li>Puerto Rico</li>
+                        <li>Saudi Arabia</li>
+                        <li>Singapore</li>
+                        <li>Spain</li>
+                        <li>Switzerland</li>
+                        <li>United Arab Emirates</li>
+                      </ol>
+                </p>
+            </div>
+        </div>
+
+        <h2>Interactive Bar Chart</h2>
+        <div class="row answer">
+            <h3 class="chart-title">International GDP per capita (in USD) for 10 countries in 2019</h3>
+            <div class="col-md-12 pt-4 controls">
+                Show: <button type="button" class="btn btn-outline-info filter" id="all">All</button>
+                <button type="button" class="btn btn-outline-info filter" id="top5">Top 5 by GDP</button>
+                <button type="button" class="btn btn-outline-info filter" id="bottom5">Bottom 5 by GDP</button>
+            </div>
+            <div class="col-md-12 pt-4 controls">
+                Sort in: <button type="button" id="alphabeticOrder" class="btn btn-outline-warning sort">Alphabetic order</button>
+                <button type="button" id="ascending" class="btn btn-outline-warning sort">Ascending order of GDP</button>
+                <button type="button" id="descending" class="btn btn-outline-warning sort">Descending order of GDP</button>
+            </div>
+            <div class="col-md-12 pt-4 controls">
+                <button type="button" id="reset" class="btn btn-outline-danger">Reset</button>  
+            </div>
+
+            <div class="col-md-12 pt-4">
+                <div id="chart"></div>
+            </div> 
+        </div>
+
+        <h2>Lollipop Chart</h2>
+            <div class="row answer">
+            <h3>Annual GDP per capita growth (%) for 20 countries in 2021</h3>
+                <div class="col-md-12 pt-5">
+                <svg id="lollipop-chart"></svg>
+                </div>
+            </div>
+
+        <h2>Bubble Chart</h2>
+        <div class="row answer">
+            <div class="col-md-12 pt-4">
+            <svg id="bubble-chart"></svg>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Pie Chart</h2>
+        <div class="row answer">
+            <div class="col-md-12 pt-4">
+                <h3>GDP per capita for 5 countries in 2019</h3>
+            
+                <svg id="donut-chart" width="900" height="500"></svg>
+                
+            </div>
+        </div>
+
+        <h2 class="mt-5">Proportional Symbol Map</h2>
+        <div class="card p-3">
+            <h3 class="mb-5">GDP per capita for 10 countries in 2019</h3>
+            <svg id="symbol-chart" width="1200" height="610"></svg>
+        </div>
+
+        <h2 class="mt-5">Choropleth Map </h2>
+        <div class="card p-3">
+            <h3 class="mb-5">GDP per capita for 10 countries in 2019</h3>
+            <svg id="choropleth-chart" width="1300" height="610"></svg>
+        </div>
+
+        <h2 class="mt-5">Mapbox map </h2>
+        <div class="card p-3 mt-3">
+            <h3>Map showing all building footprints for USC UPC</h3>
+            <p>Click on colored entity to get more information</p>
+            <div id="wrapper">
+                <div id="map"></div>
+                <div id="mapbox-legend" class="legend">
+                    <h4>Area</h4>
+                    <div><span style="background-color: #49006a"></span>100,000</div>
+                    <div><span style="background-color: #7a0177"></span>60,000</div>
+                    <div><span style="background-color: #ae017e"></span>20,000</div>
+                    <div><span style="background-color: #dd3497"></span>10,000</div>
+                    <div><span style="background-color: #f768a1"></span>5,000</div>
+                    <div><span style="background-color: #fa9fb5"></span>1,000</div>
+                    <div><span style="background-color: #fcc5c0"></span>500</div>
+                    <div><span style="background-color: #fde0dd"></span>100</div>
+                    <div><span style="background-color: #fff7f3"></span>0</div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+       
+
+    
+</body>
+
+<script src="./js/index.js"></script>
+<script src="./js/lollipopChart.js"></script>
+<script src="./js/bubbleChart.js"></script>
+<script src="./js/pie-chart.js"></script>
+<script src="./js/symbol-chart.js"></script>
+<script src="./js/choropleth-chart.js"></script>
+<script src="./js/mapBox.js"></script>
+
+</html>

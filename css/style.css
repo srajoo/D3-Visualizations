@@ -1,0 +1,135 @@
+body {
+    margin: 20px 25px 25px 25px;
+  }
+  
+pre {
+    border-radius: 5px;
+  }
+  
+.answer {
+    border: 2px solid lightgrey;
+    margin: 20px 0px;
+    padding: 10px;
+  }
+
+.chart-title {
+    text-align: center;
+}
+.controls {
+    text-align: center;
+}
+.controls button {
+    margin: 0 5px;
+}
+#chart {
+    text-align: center;
+}
+rect.bar:hover {
+    fill: pink;
+}
+path {
+    stroke: black;
+  }
+  
+  .tick line {
+    stroke: black;
+  }
+  
+  .tick {
+    stroke: black;
+  }
+  
+  .tick text {
+    stroke: none;
+    fill: black;
+    font-size: 8px;
+    font-weight: bold;
+  }
+  
+  text.label {
+    font-size: 8px;
+    text-anchor: middle;
+    alignment-baseline: middle;
+  }
+  .table-responsive {
+    max-height:400px;
+  }
+  img{
+    width: 100%;
+  }
+  #bar-chart, #lollipop-chart{
+    display: inline-block;
+    vertical-align: top;
+    background-color: #f8f8f8;
+  }
+  
+  #bubble-chart path {
+    stroke: white;
+  }
+  
+  #bubble-chart .tick line {
+    stroke: white;
+  }
+  
+  #bubble-chart .tick {
+    stroke: white;
+  }
+  
+  #bubble-chart .tick text {
+    stroke: none;
+    fill: white;
+    font-size: 8px;
+  }
+  #bubble-chart
+  {
+    display: inline-block;
+    vertical-align: top;
+    background-color: black;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  .cities {
+    fill:white;
+    stroke: black;
+    stroke-width: 0.5px;
+  }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+#wrapper {
+  width: 650px !important;
+  height: 450px !important;
+  position: relative;
+  display: inline-block;
+  margin: 2em 25%;
+}
+.legend {
+background-color: #fff;
+border-radius: 3px;
+bottom: 30px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+padding: 10px;
+position: absolute;
+right: 10px;
+z-index: 1;
+}
+ 
+.legend h4 {
+margin: 0 0 10px;
+}
+ 
+.legend div span {
+border-radius: 50%;
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
+}
+.mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  } 
